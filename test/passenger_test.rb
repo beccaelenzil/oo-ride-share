@@ -69,6 +69,77 @@ describe "Passenger class" do
   end
 
   describe "net_expenditures" do
-    # You add tests for the net_expenditures method
+    before do
+      # TODO: you'll need to add a driver at some point here.
+      @passenger = RideShare::Passenger.new(
+        id: 9,
+        name: "Merl Glover III",
+        phone_number: "1-602-620-2330 x3723",
+        trips: []
+        )
+      trip = RideShare::Trip.new(
+        id: 8,
+        passenger: @passenger,
+        start_time: Time.parse("2016-08-08"),
+        end_time: Time.parse("2016-08-08") + 600,
+        cost: 12,
+        rating: 5)
+
+        @passenger2 = @passenger
+        @passenger2.add_trip(trip)
+        @passenger2.add_trip(trip)
+        @passenger2.add_trip(trip)
+    end
+
+    it "calculates total expenditures" do
+      @passenger = RideShare::Passenger.new(
+        id: 9,
+        name: "Merl Glover III",
+        phone_number: "1-602-620-2330 x3723",
+        trips: []
+        )
+
+      expect(@passenger2.net_expenditures).must_equal 36
+      expect(@passenger.net_expenditures).must_equal 0
+
+    end
+    
+  end
+
+  describe "total_time_spent" do
+    before do
+      # TODO: you'll need to add a driver at some point here.
+      @passenger = RideShare::Passenger.new(
+        id: 9,
+        name: "Merl Glover III",
+        phone_number: "1-602-620-2330 x3723",
+        trips: []
+        )
+      trip = RideShare::Trip.new(
+        id: 8,
+        passenger: @passenger,
+        start_time: Time.parse("2016-08-08"),
+        end_time: Time.parse("2016-08-08") + 600,
+        cost: 12,
+        rating: 5)
+
+      @passenger2 = @passenger
+      @passenger2.add_trip(trip)
+      @passenger2.add_trip(trip)
+      @passenger2.add_trip(trip)
+    end
+
+    it "calculates total time spent" do
+      @passenger = RideShare::Passenger.new(
+        id: 9,
+        name: "Merl Glover III",
+        phone_number: "1-602-620-2330 x3723",
+        trips: []
+        )
+
+      expect(@passenger2.total_time_spent).must_equal 1800
+      expect(@passenger.total_time_spent).must_equal 0
+    end
+
   end
 end
