@@ -5,11 +5,13 @@ module RideShare
     attr_reader :name, :phone_number, :trips
 
     def initialize(id:, name:, phone_number:, trips: nil)
+    #def initialize(id:, name:, phone_number:, trips: [])
       super(id)
 
       @name = name
       @phone_number = phone_number
       @trips = trips || []
+      #@trips = trips 
     end
 
     def add_trip(trip)

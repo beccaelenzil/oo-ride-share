@@ -2,6 +2,7 @@ require 'csv'
 
 module RideShare
   class CsvRecord
+    #friday!!!
     attr_reader :id
 
     def initialize(id)
