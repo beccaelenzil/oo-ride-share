@@ -53,6 +53,10 @@ module RideShare
       return end_time - start_time
     end
 
+    def avg_rating
+      return 5
+    end
+
     private
     
     def self.from_csv(record)
