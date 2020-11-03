@@ -19,6 +19,10 @@ module RideShare
       return 100
     end
 
+    def average_rating
+      return 5
+    end
+
     private
 
     def self.from_csv(record)
