@@ -32,7 +32,11 @@ describe "Trip class" do
     end
 
     it "raises an error for an invalid rating" do
-      [-3, 0, 6].each do |rating|
+      # arrange
+      invalid_ratings = [-3, 0, 11]
+
+      # act/assert
+      invalid_ratings.each do |rating|
         @trip_data[:rating] = rating
         expect do
           RideShare::Trip.new(@trip_data)
@@ -58,8 +62,12 @@ describe "Trip class" do
       expect{RideShare::Trip.new(@trip_data)}.must_raise ArgumentError
     end
 
-    it "gives the difference between end and start times in seconds" do  
-      expect(@trip.calculate_duration(@trip.start_time, @trip.end_time)).must_equal 1500
+    it "gives the difference between end and start times in seconds" do
+      #arrange
+      expected_duration = @trip.end_time - @trip.start_time
+
+      # act/assert
+      expect(@trip.calculate_duration(@trip.start_time, @trip.end_time)).must_equal expected_duration
     end
   end
 end

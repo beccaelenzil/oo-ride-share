@@ -7,10 +7,16 @@ module RideShare
     def initialize(id:, name:, vin:, status:, trips: nil)
       super(id)
 
+      raise ArgumentError.new("Invalid Status")
+
       @name = name
       @vin = vin
       @status = status
       @trips = trips || []
+    end
+
+    def total_revenue
+      return 100
     end
 
     private
